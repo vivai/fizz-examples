@@ -1,5 +1,6 @@
 // @flow
 
+import 'babel-polyfill';
 import './views/reverse';
 import {reverse} from './actions/reverse';
 
