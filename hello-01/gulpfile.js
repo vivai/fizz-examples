@@ -14,7 +14,6 @@ const gulp = require('gulp'),
       flow = require('gulp-flowtype'),
       del = require('del'),
       path = require('path'),
-      karma = require('karma'),
       server = require( 'gulp-develop-server' ),
       util = require('gulp-util'),
       livereload = require('gulp-livereload');
@@ -65,10 +64,7 @@ const project = './project',
             `${target}/www` // docuemnt root
           ]
         },
-        flow: { },
-        karma: {
-          configFile: path.join(__dirname, 'karma.conf.js')
-        }
+        flow: { }
       };
 
 //------------------------------------------------------------------------------
@@ -212,19 +208,6 @@ function buildJs(config) {
   return bundle;
 }
 
-
-//------------------------------------------------------------------------------
-// test
-//
-// run tets with karma
-gulp.task('run:tests', gulp.series(runTestsKarma));
-function runTestsKarma(done) {
-  new karma.Server({
-    configFile: options.karma.configFile,
-    singleRun: true
-  }, done).start();
-}
-
 //------------------------------------------------------------------------------
 // copy
 //
@@ -242,14 +225,7 @@ function copyCss() {
     .pipe(livereload());
 }
 
-gulp.task('copy:lib', copyLib);
-function copyLib() {
-  return gulp.src(paths.lib.js)
-    .pipe(gulp.dest(paths.target.lib))
-    .pipe(livereload());
-}
-
-gulp.task('copy', gulp.parallel('copy:html', 'copy:css', 'copy:lib'));
+gulp.task('copy', gulp.parallel('copy:html', 'copy:css'));
 
 //------------------------------------------------------------------------------
 // watch
@@ -259,7 +235,6 @@ function watch(done) {
   gulp.watch(paths.src.html, copyHtml);
   gulp.watch(paths.src.css, copyCss);
   gulp.watch(paths.src.scss, buildSass);
-  gulp.watch(paths.lib.js, copyLib);
   done();
 }
 
