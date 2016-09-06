@@ -1,47 +1,53 @@
 // @flow
 
-import * as dom from 'jsz-dom';
-import {EMPTY_STRING} from 'jsz-string';
 import {reverse} from '../actions/reverse';
 import store from '../stores/reverse';
 
 let view = {
-  text: dom.getElementById('text'),
-  button: dom.getElementById('reverse'),
-  content: dom.getElementById('content'),
+  text: document.getElementById('text'),
+  button: document.getElementById('reverse'),
+  content: document.getElementById('content'),
   state: store.state(),
 
   init() {
-    view.button.onClick(view.onClick);
+    view.button.addEventListener('click', view.onClick);
     view.render();
   },
 
   onClick() {
-    reverse(view.text.value || EMPTY_STRING);
+    if (view.text instanceof HTMLInputElement) {
+      reverse(view.text.value);
+    }
   },
 
-  onChange(state) {
+  update(state) {
     view.state = state;
     view.render();
   },
 
   render() {
-    console.info('render');
-    console.log(`content = ${view.state.content}`);
-    console.log(`progress = ${view.state.progress}`);
+    console.log('view: render');
+
 
     view.content.innerHTML = view.state.content;
     if (view.state.progress) {
-      view.text.disable();
-      view.button.disable();
+      if (view.text instanceof HTMLInputElement) {
+        view.text.disabled = true;
+      }
+      if (view.button instanceof HTMLButtonElement) {
+        view.button.disabled = true;
+      }
     } else {
-      view.text.enable();
-      view.button.enable();
+      if (view.text instanceof HTMLInputElement) {
+        view.text.disabled = false;
+      }
+      if (view.button instanceof HTMLButtonElement) {
+        view.button.disabled = false;
+      }
     }
   }
 
 }
 
 view.init();
-
-store.onChange(view.onChange);
+store.onChange(view.update);

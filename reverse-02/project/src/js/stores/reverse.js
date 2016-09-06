@@ -2,10 +2,11 @@
 
 import {Store} from 'fizz-flux';
 import {reverseStart, reverseRun, reverseStop} from '../actions/reverse';
+import {EMPTY_STRING} from 'jsz-string';
 
 export default Store.create(
   {
-    content: '',
+    content: EMPTY_STRING,
     progress: false
   }
 ).register(reverseRun, function(payload) {

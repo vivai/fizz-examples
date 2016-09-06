@@ -14,7 +14,9 @@ let view = {
   },
 
   onClick() {
-    hello(view.input.value || '');
+    if (view.input instanceof HTMLInputElement) {
+      hello(view.input.value);
+    }
   },
 
   render() {

@@ -30,6 +30,8 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "fizz-flux": "^0.1.6"
+    "fizz-flux": "^0.1.6",
+    "jsz-dom": "^0.1.4",
+    "jsz-string": "^0.2.3"
   }
 }
