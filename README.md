@@ -11,15 +11,19 @@ For now, just an alpha release.
 All examples have a prefix number. The number is related to the type of the 
 example.
 
-**example-01**: An example with the prefix 01 will use plain old JavaScript.
+**example-01:** An example with the prefix 01 will use plain old JavaScript.
 In these examples, no CSS is used.
 
-**example-02**: An example with the prefix 02 will use 
-[jsz-dom.](https://github.com/vivai/jsz-dom). 
-[jsz-dom](https://github.com/vivai/jsz-dom) provides some tools for working 
+**example-02:** An example with the prefix 02 will use 
+[jsz-dom.][jsz-dom-url]. 
+[jsz-dom][jsz-dom-url] provides some tools for working 
 with the DOM. In these examples, no CSS is used.
 
-**example-03** Comming Soon! ([React](https://facebook.github.io/react/))
+**example-03:** Comming Soon! ([React][react-url])
 
-**example-04** Comming Soon! ([React](https://facebook.github.io/react/), 
-[Bootstrap](http://getbootstrap.com))
+**example-04:** Comming Soon! ([React][react-url], 
+[Bootstrap][bootstrap-url])
+
+[react-url]:https://facebook.github.io/react/
+[bootstrap-url]:http://getbootstrap.com
+[jsz-dom-url]:https://github.com/vivai/jsz-dom
