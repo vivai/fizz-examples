@@ -60,7 +60,7 @@ const project = './project',
         server: {
           path: `${dev}/server.js`,
           args: [
-            8000,           // port
+            8001,           // port
             `${target}/www` // docuemnt root
           ]
         },
