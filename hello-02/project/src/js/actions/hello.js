@@ -2,7 +2,7 @@
 
 import {Action} from 'fizz-flux';
 
-export let hello = Action.create(function(name: string) {
+export let hello = Action.create('Hello', function(name: string) {
   console.log('action: hello');
   return {name};
 });
