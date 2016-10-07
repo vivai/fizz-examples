@@ -3,18 +3,18 @@
 import {Store} from 'fizz-flux';
 import {reverseStart, reverseRun, reverseStop} from '../actions/reverse';
 
-export default Store.create(
+export default Store.create('App',
   {
     content: '',
     progress: false
   }
-).register(reverseRun, function(payload) {
+).register(reverseRun, function(state, payload) {
   console.log('store: dispatch reverseRun');
-  this.content = payload.data;
-}).register(reverseStart, function() {
+  return {...state, content: payload.data};
+}).register(reverseStart, function(state) {
   console.log('store: dispatch reverseStart');
-  this.progress = true;
-}).register(reverseStop, function() {
+  return {...state, progress: true};
+}).register(reverseStop, function(state) {
   console.log('store: dispatch reverseStop');
-  this.progress = false;
+  return {...state, progress: false};
 });
