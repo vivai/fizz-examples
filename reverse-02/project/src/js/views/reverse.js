@@ -25,8 +25,6 @@ let view = {
   },
 
   render() {
-    console.log('view: render');
-
     view.content.innerHTML = view.state.content;
 
     if (view.state.progress) {

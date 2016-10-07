@@ -12,7 +12,7 @@ export let reverseStart = Action.create();
 export let reverseStop = Action.create();
 
 export function reverse(str: string) {
-  reverseStart();
-  reverseRun(str)
+  reverseStart()
+    .then(() => reverseRun(str))
     .then(reverseStop);
 }
