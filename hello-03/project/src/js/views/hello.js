@@ -31,6 +31,7 @@ export default class HelloComponent extends React.Component {
         <h1>Hello, {this.state.name}!</h1>
         <input ref={(node) => this.input = node} type='text' size='32'/>
         <button onClick={() => this.onClick()}>say Hello</button>
+        <hr/><p>example: hello-03</p>
       </div>
     );
   }

@@ -3,11 +3,11 @@
 import {Store} from 'fizz-flux';
 import {hello} from '../actions/hello';
 
-export default Store.create(
+export default Store.create('Hello',
   {
     name: 'world'
   }
-).register( hello, function(payload) {
+).register( hello, function(state, payload) {
   console.info('store: dispatch hello');
-  this.name = payload.name;
+  return {...state, ...payload};
 });
